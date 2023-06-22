@@ -1,0 +1,6 @@
+venv
+node_modules
+.serverless
+.DS_Store
+**/.DS_Store
+.idea
