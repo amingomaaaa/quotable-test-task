@@ -4,8 +4,9 @@ frameworkVersion: '3'
 
 provider:
   name: azure
-  region: West Europe
+  region: North Europe
   runtime: python3.8
+  resourceGroup: test-task
 
 plugins:
   - serverless-azure-functions

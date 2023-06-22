@@ -46,14 +46,14 @@ class QuotableService:
             logging.error(f"An error occurred while sending the API request: {str(e)}")
 
     @classmethod
-    def get_filtered_quote(cls, particle: str) -> Optional[List[str]]:
+    def get_filtered_quote(cls, particle: str) -> Optional[List[Quote]]:
         """Retrieve quotes containing a specified particle in the author's name"""
         try:
             response = cls._API_CLIENT.send_get_request("quotes")
             if response.status_code == 200:
                 quotes = response.json()
                 filtered_quotes = [
-                    Quote(**quote).to_json()
+                    Quote(**quote)
                     for quote in quotes["results"]
                     if particle in quote["author"].lower()
                 ]
@@ -64,3 +64,11 @@ class QuotableService:
                 )
         except requests.exceptions.RequestException as e:
             logging.error(f"An error occurred while sending the API request: {str(e)}")
+
+
+
+a = QuotableService()
+
+c = a.get_random_quote()
+
+print(c)

@@ -10,7 +10,7 @@ def get_filtered_quote(req: func.HttpRequest) -> func.HttpResponse:
     try:
         quote_service = QuotableService()
         filtered_quote = quote_service.get_filtered_quote("les")
-        return func.HttpResponse(filtered_quote, status_code=200)
+        return func.HttpResponse(f"These are quotes whose authors contains 'les' {filtered_quote}", status_code=200)
     except requests.RequestException as e:
         logging.error(f"Failed to retrieve quotes. Exception: {str(e)}")
         error_message = "Failed to retrieve quotes. Please try again later."
